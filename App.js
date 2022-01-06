@@ -1,28 +1,27 @@
-import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, Button, StyleSheet } from 'react-native';
 
+const ClickerApp = () => {
+  const [count, setCount] = useState(0);
+
+  return (
+    <View style={styles.container}>
+      <Text>You clicked {count} times</Text>
+      <Button
+        onPress={() => setCount(count + 1)}
+        title="Click me!"
+      />
+    </View>
+  );
+};
+
+// React Native Styles
 const styles = StyleSheet.create({
-  center: {
+  container: {
+    flex: 1,
+    justifyContent: 'center',
     alignItems: 'center'
   }
-})
+});
 
-const Greeting = (props) => {
-  return (
-    <View style={styles.center}>
-      <Text>Hello {props.name}!, Your age is {props.age}</Text>
-    </View>
-  );
-}
-
-const LotsOfGreetings = () => {
-  return (
-    <View style={[styles.center, {top: 50}]}>
-      <Greeting name='Rexxar' age='15' />
-      <Greeting name='Jaina' />
-      <Greeting name='Valeera' />
-    </View>
-  );
-}
-
-export default LotsOfGreetings;
+export default ClickerApp;
